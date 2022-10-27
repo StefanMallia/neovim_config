@@ -36,6 +36,7 @@ nnoremap <leader>newtab :Te<CR>
 nnoremap <leader>te :Te<CR>
 
 set guicursor=i:ver100-icursor
+set hlsearch
 
 syntax enable
 " show existing tab with 4 spaces width
@@ -55,76 +56,6 @@ set history=10000
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Coc configuration
-
-"let g:ale_linters = {'rust': ['rls']}
-nnoremap <space>e :CocCommand explorer<CR>
-nnoremap cocrestart :CocRestart
-
-" Use K for show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
-
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-
-
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: There's always complete item selected by default, you may want to enable
-" no select by `"suggest.noselect": true` in your configuration file.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-
-inoremap <silent><expr> <c-j>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-inoremap <expr><c-k> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-
-" Make <CR> to accept selected completion item or notify coc.nvim to format
-" <C-g>u breaks current undo, please make your own choice.
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-" Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
-
-
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-
-
-" Symbol renaming.
-" prev: <leader>rn
-nmap rename <Plug>(coc-rename)
-
-" Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins will be downloaded under the specified directory.
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
@@ -136,18 +67,11 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
 "Plug 'Valloric/YouCompleteMe'
 
-"Conquer of Completion
-"https://github.com/neoclide/coc.nvim
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Support for the rust language was installed with the following commands:
-"rustup component add rls rust-analysis rust-src
-":CocInstall coc-rls
-
 
 "Plug 'davidhalter/jedi-vim'
 Plug 'ParamagicDev/vim-medic_chalk'
 
-Plug 'puremourning/vimspector'
+"Plug 'puremourning/vimspector'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -168,15 +92,22 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Rust commands
 "using bash command to keep gnome-terminal open
-nnoremap cargobuild :cd %:p:h <bar> !gnome-terminal -- bash -c "cargo build; exec bash;"<CR><ESC>
-nnoremap cargorun :cd %:p:h <bar> !gnome-terminal -- bash -c "cargo run; exec bash;"<CR><ESC>
-nnoremap terminal :cd %:p:h <bar> !gnome-terminal -- bash -c "exec bash;"<CR><ESC>
+nnoremap <leader>cargobuild :cd %:p:h <bar> !gnome-terminal -- bash -c "cargo build; exec bash;"<CR><ESC>
+nnoremap <leader>cargorun :cd %:p:h <bar> !gnome-terminal -- bash -c "cargo run; exec bash;"<CR><ESC>
+nnoremap <leader>terminal :cd %:p:h <bar> !gnome-terminal -- bash -c "exec bash;"<CR><ESC>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "fzf shortcut for search git files
 nnoremap <C-p> :GFiles<Cr>
 nnoremap <C-f> :CocSearch 
 "nnoremap <C-f> :Rg<Cr>
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Rust debugging with gdb
+
+packadd termdebug
+let g:termdebugger="rust-gdb"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:deoplete#enable_at_startup = 1
 colorscheme medic_chalk

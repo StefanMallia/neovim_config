@@ -35,3 +35,7 @@ vim.keymap.set("i", "jj", "<Esc>")
 vim.keymap.set("i", "{<CR>", "{<CR>}<Esc>0")
 vim.keymap.set("n", "<leader>newtab", ":Texplore<CR>")
 vim.keymap.set("n", "<leader>te", ":Texplore<CR>")
+
+
+--Open new gnome terminal at current directory
+vim.keymap.set("n", "<leader>terminal", ':cd %:p:h <bar> !gnome-terminal -- bash -c "exec bash;"<CR><ESC>')

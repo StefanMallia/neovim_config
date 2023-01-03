@@ -33,8 +33,7 @@ vim.cmd [[let g:netrw_browse_split = 3]]
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("i", "jj", "<Esc>")
 vim.keymap.set("i", "{<CR>", "{<CR>}<Esc>0")
-vim.keymap.set("n", "<leader>newtab", ":Texplore<CR>")
-vim.keymap.set("n", "<leader>te", ":Texplore<CR>")
+vim.keymap.set("n", "<leader>nt", ":Texplore<CR>")
 
 
 --Open new gnome terminal at current directory

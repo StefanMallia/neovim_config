@@ -32,9 +32,14 @@ vim.cmd [[let g:netrw_browse_split = 3]]
 
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("i", "jj", "<Esc>")
+vim.keymap.set("n", "J", "j")
 vim.keymap.set("i", "{<CR>", "{<CR>}<Esc>0")
 vim.keymap.set("n", "<leader>nt", ":Texplore<CR>")
-
+--remap navigation keys in insert mode
+vim.keymap.set("i", "<C-j>", "<Down>")
+vim.keymap.set("i", "<C-k>", "<Up>")
+vim.keymap.set("i", "<C-h>", "<Left>")
+vim.keymap.set("i", "<C-l>", "<Right>")
 
 --Open new gnome terminal at current directory
 vim.keymap.set("n", "<leader>terminal", ':cd %:p:h <bar> !gnome-terminal -- bash -c "exec bash;"<CR><ESC>')

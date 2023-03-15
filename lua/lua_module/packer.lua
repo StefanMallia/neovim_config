@@ -7,6 +7,7 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
   use 'ParamagicDev/vim-medic_chalk'
+  --use 'tpope/vim-vividchalk'
 
   use
   {
@@ -17,7 +18,10 @@ return require('packer').startup(function(use)
 
   use( 'nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'}  )
 
-  use { "nvim-telescope/telescope-file-browser.nvim" }
+  use {
+    "nvim-telescope/telescope-file-browser.nvim",
+    requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+}
 
   use {
 	  'VonHeikemen/lsp-zero.nvim',
@@ -40,6 +44,14 @@ return require('packer').startup(function(use)
 		  {'rafamadriz/friendly-snippets'},
 	  }
   }
+  use 'mfussenegger/nvim-dap-python'
+  use 'nvim-lua/plenary.nvim'
+  use 'mfussenegger/nvim-dap'
+  use 'neovim/nvim-lspconfig'
+  use 'simrat39/rust-tools.nvim'
+
+  use({'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" }})
+
 end)
 
 

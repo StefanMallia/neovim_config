@@ -3,14 +3,14 @@ local lsp = require('lsp-zero')
 lsp.preset('recommended')
 
 lsp.ensure_installed({
-	'tsserver',
-	'eslint',
-	'sumneko_lua',
+--	'tsserver',
+--	'eslint',
+--	'lua-ls',
 	'rust_analyzer',
 })
 
 -- Fix Undefined global 'vim'
-lsp.configure('sumneko_lua', {
+lsp.configure('lua-ls', {
     settings = {
         Lua = {
             diagnostics = {

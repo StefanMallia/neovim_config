@@ -1,3 +1,4 @@
 require("lua_module")
---print("Hello")
+
+vim.diagnostic.config({ float = { source = 'always', border = border }, })
 

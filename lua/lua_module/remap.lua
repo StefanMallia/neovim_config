@@ -30,7 +30,8 @@ vim.cmd [[autocmd filetype netrw nmap <buffer> <C-L> <C-PageDown>]]
 --to open new tabs in explorer
 vim.cmd [[let g:netrw_browse_split = 3]]
 
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+--vim.keymap.set("n", "<leader>e", vim.cmd.Ex) --for netrw
+vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
 vim.keymap.set("i", "jj", "<Esc>")
 vim.keymap.set("n", "J", "j")
 vim.keymap.set("i", "{<CR>", "{<CR>}<Esc>0")
@@ -42,4 +43,4 @@ vim.keymap.set("i", "<C-h>", "<Left>")
 vim.keymap.set("i", "<C-l>", "<Right>")
 
 --Open new gnome terminal at current directory
-vim.keymap.set("n", "<leader>terminal", ':cd %:p:h <bar> !gnome-terminal -- bash -c "exec bash;"<CR><ESC>')
+vim.keymap.set("n", "<leader>term", ':cd %:p:h <bar> !gnome-terminal -- bash -c "exec bash;"<CR><ESC>')

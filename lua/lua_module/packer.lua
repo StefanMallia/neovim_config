@@ -21,7 +21,7 @@ return require('packer').startup(function(use)
   use {
     "nvim-telescope/telescope-file-browser.nvim",
     requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
-}
+  }
 
   use {
 	  'VonHeikemen/lsp-zero.nvim',
@@ -50,7 +50,18 @@ return require('packer').startup(function(use)
   use 'neovim/nvim-lspconfig'
   use 'simrat39/rust-tools.nvim'
 
-  use({'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" }})
+  --use({'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" }})
+
+
+  use {
+  'nvim-tree/nvim-tree.lua',
+  requires = {
+    'nvim-tree/nvim-web-devicons', -- optional
+  },
+  config = function()
+    require("nvim-tree").setup {}
+  end
+  }
 
 end)
 

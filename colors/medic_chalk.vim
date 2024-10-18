@@ -155,6 +155,7 @@ call s:hifg("Comment"        ,"#9933CC","DarkMagenta",34) " 92
 call s:hifg("Constant"       ,"#339999","DarkCyan",21) " 30
 call s:hifg("String"         ,"#66FF00","LightGreen",44,82) " 82
 call s:hifg("Identifier"     ,"#FFCC00","Yellow",72) " 220
+call s:hifg("Function"       ,"#0086FF","Malibu",72) " 220
 call s:hifg("Statement"      ,"#FF6600","Brown",68) " 202
 call s:hifg("PreProc"        ,"#AAFFFF","LightCyan",47) " 213
 call s:hifg("Type"           ,"#AAAA77","Grey",57) " 101

@@ -48,7 +48,7 @@ vim.keymap.set("i", "<C-h>", "<Left>")
 vim.keymap.set("i", "<C-l>", "<Right>")
 
 --Open new gnome terminal at current directory
-vim.keymap.set("n", "<leader>term", ':cd %:p:h <bar> !gnome-terminal -- bash -c "exec bash;"<CR><ESC>', {desc = 'Terminal'})
+--vim.keymap.set("n", "<leader>term", ':cd %:p:h <bar> !gnome-terminal -- bash -c "exec bash;"<CR><ESC>', {desc = 'Terminal'})
 
 vim.keymap.set("n", "<leader>sl", ':luafile %<CR>', {desc = 'Source init.lua'})
 
